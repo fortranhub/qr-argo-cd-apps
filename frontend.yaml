@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend-dev
+  namespace: argo-cd  
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: application-dev
+  project: default
+  source:
+    repoURL: https://github.com/fortranhub/qr-manifests.git
+    path: frontend
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
