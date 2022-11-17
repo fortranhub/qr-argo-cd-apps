@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: backend-dev
+  name: app-dev
   namespace: argo-cd
 spec:
   destination:
@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/fortranhub/qr-manifests.git
-    path: backend/
+    path: .
     targetRevision: HEAD
   syncPolicy:
     automated:
